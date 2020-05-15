@@ -10,7 +10,7 @@
 void ATankPlayerController::Tick(float DeltaTime){
 	Super::Tick(DeltaTime);
 	AimTowardsCrosshair();
-	UE_LOG(LogTemp, Warning, TEXT("pC TIcker"));
+	//UE_LOG(LogTemp, Warning, TEXT("pC TIcker"));
 }
 void ATankPlayerController::BeginPlay() {
 	Super::BeginPlay();
@@ -33,6 +33,7 @@ void ATankPlayerController::AimTowardsCrosshair() {
 	if (!GetControlledTank()) { return; }
 	FVector HitLocation;
 	if (GetSightRayHitLocation(HitLocation)) {
+		GetControlledTank()->AimAt(HitLocation);
 		//UE_LOG(LogTemp, Warning, TEXT("HITLOCATION %s"), *HitLocation.ToString());
 	}
 
@@ -47,7 +48,7 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation)const
 		//UE_LOG(LogTemp, Warning, TEXT("look location %s"), *LookDirection.ToString());
 		GetLookVectorHitLocation(LookDirection, OutHitLocation);
 	}
-	OutHitLocation = FVector(1.f);
+	//OutHitLocation = FVector(7.f);
 	return true;
 }
 bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const {
@@ -56,7 +57,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 	auto StartLocation = PlayerCameraManager->GetCameraLocation();
 	auto EndLocation = StartLocation+ (LookDirection * LineTraceRange);
 	if (GetWorld()->LineTraceSingleByChannel(HitResult,StartLocation,EndLocation,ECollisionChannel::ECC_Visibility)) {
-		UE_LOG(LogTemp, Warning, TEXT("HITLOCATION %s"), *HitResult.Location.ToString());
+		//UE_LOG(LogTemp, Warning, TEXT("HITLOCATION %s"), *HitResult.Location.ToString());
 		HitLocation = HitResult.Location;
 			return true;
 	}
