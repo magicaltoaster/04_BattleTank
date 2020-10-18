@@ -3,6 +3,7 @@
 //#include "BattleTank.h"
 #include "../Public/Tank.h"
 #include "TankPlayerController.h"
+#include "Tank.h"
 
 //tick
 	//super
