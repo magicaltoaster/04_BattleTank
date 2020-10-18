@@ -48,6 +48,8 @@ void UTankAimingComponent::AimAt(FVector HitLocation,float LaunchSpeed) {
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 		auto Tankname = GetOwner()->GetName();
 		UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s"),*Tankname, *AimDirection.ToString());
+
+		//test
 	}
 }
 
