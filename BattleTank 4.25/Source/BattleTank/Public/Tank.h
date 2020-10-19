@@ -17,11 +17,14 @@ class BATTLETANK_API ATank : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ATank();
-	void AimAt(FVector HitLocation);
+
 	UFUNCTION(BluePrintCallable,Category = Setup)
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
 	UFUNCTION(BluePrintCallable, Category = Setup)
 		void SetTurretReference(UTankTurret* TurretToSet);
+	void AimAt(FVector HitLocation);
+	UFUNCTION(BluePrintCallable,Category = Firing)
+		void Fire();
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

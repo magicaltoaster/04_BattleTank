@@ -11,17 +11,14 @@
 void ATankPlayerController::Tick(float DeltaTime){
 	Super::Tick(DeltaTime);
 	AimTowardsCrosshair();
-	//UE_LOG(LogTemp, Warning, TEXT("pC TIcker"));
 }
 void ATankPlayerController::BeginPlay() {
 	Super::BeginPlay();
 	auto ControlledTank = ATankPlayerController::GetControlledTank();
 	if (ControlledTank==nullptr) {
-		UE_LOG(LogTemp, Warning, TEXT("PlayerController not possessing a tank"));
 	}
 	else {
 
-		UE_LOG(LogTemp, Warning, TEXT("Controller posssessing: %s"), *(ControlledTank->GetName()));
 	}
 }
 	

@@ -41,4 +41,7 @@ void ATank::SetTurretReference(UTankTurret* turretToSet)
 {
 	TankAimingComponent->SetTurretReference(turretToSet);
 }
-
+void ATank::Fire() {
+	auto Time = GetWorld()->GetTimeSeconds();
+	UE_LOG(LogTemp, Warning, TEXT("Tank Fires"),Time);
+}
