@@ -7,6 +7,7 @@
 #include "TankAimingComponent.generated.h"
 // forward Decleration
 class UTankBarrel; 
+class UTankTurret;
 //hold barrel's properties and elevate method 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BATTLETANK_API UTankAimingComponent : public UActorComponent
@@ -17,6 +18,8 @@ public:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
+	void SetTurretReference(UTankTurret* TurretToSet);
+
 protected:
 	// Called when the game starts
 
@@ -25,5 +28,6 @@ public:
 	void AimAt(FVector HitLocation, float LaunchSpeed);
 private:
 	UTankBarrel* Barrel = nullptr;
+	UTankTurret* Turret = nullptr;
 	void MoveBarrelTowards(FVector AimDirection);
 };
